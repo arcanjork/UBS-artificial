@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSUS - Triagem Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MedSUS</h1>
+            <p>Triagem médica gratuita</p>
+        </header>
+
+        <main>
+            <section id="symptom-section">
+                <h2>Descreva seus sintomas</h2>
+                <textarea id="symptoms-input" placeholder="Ex.: Febre, dor de cabeça e náusea desde ontem..."></textarea>
+                <button id="analyze-btn">Analisar Sintomas</button>
+            </section>
+
+            <section id="results-section" class="hidden">
+                <h2>Resultado da Triagem</h2>
+                <div id="ai-result"></div>
+                <div id="health-units">
+                    <h3>Unidades de Saúde Próximas</h3>
+                    <ul id="units-list"></ul>
+                </div>
+                <button id="new-check">Nova Consulta</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>Este sistema não substitui uma consulta médica</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
