@@ -9,79 +9,156 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/images/logo-icon.svg">
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="assets/logo.svg" alt="MedSUS" width="120">
+                <img src="assets/images/logo.svg" alt="MedSUS" width="130">
             </a>
             <nav class="nav">
-                <a href="#" class="nav-link">Como funciona</a>
-                <a href="#" class="nav-link">Para médicos</a>
-                <a href="#" class="nav-link">Sobre nós</a>
+                <a href="#how-it-works" class="nav-link">Como funciona</a>
+                <a href="#for-doctors" class="nav-link">Para médicos</a>
+                <a href="#about" class="nav-link">Sobre nós</a>
                 <a href="#" class="nav-link btn-outline">Entrar</a>
             </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <main class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Triagem médica <span class="text-gradient">precisa</span> e <span class="text-gradient">acessível</span></h1>
-                <p class="hero-text">Descreva seus sintomas e receba orientações instantâneas baseadas em protocolos do SUS</p>
+                <h1>Saúde acessível com <span class="text-gradient">tecnologia</span></h1>
+                <p class="hero-text">Nossa plataforma utiliza inteligência artificial para orientação médica preliminar, aliviando o sistema público de saúde.</p>
                 
                 <div class="symptom-card">
-                    <h3>O que você está sentindo?</h3>
-                    <textarea placeholder="Ex.: Dor de cabeça persistente, febre e náuseas..."></textarea>
-                    <button class="btn-primary">
+                    <h3><i class="fas fa-heartbeat"></i> O que você está sentindo?</h3>
+                    <textarea id="symptoms-input" placeholder="Ex.: Dor de cabeça persistente há 3 dias, com febre alta..."></textarea>
+                    <button id="analyze-btn" class="btn-primary">
                         <i class="fas fa-stethoscope"></i> Analisar sintomas
                     </button>
                 </div>
+
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% seguro</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-md"></i>
+                        <span>Baseado em protocolos SUS</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <span>Privacidade garantida</span>
+                    </div>
+                </div>
             </div>
             <div class="hero-image">
-                <img src="assets/doctor-illustration.svg" alt="Médico virtual" width="400">
+                <img src="assets/images/doctor.svg" alt="Médico virtual" width="450">
             </div>
         </div>
-    </main>
+    </section>
 
-    <section class="results-section hidden">
+    <!-- Results Section (hidden by default) -->
+    <section class="results-section hidden" id="results">
         <div class="container">
             <div class="results-card">
-                <div class="back-link">
+                <a href="#home" class="back-link">
                     <i class="fas fa-arrow-left"></i> Voltar
-                </div>
+                </a>
                 <h2>Resultado da sua triagem</h2>
                 
                 <div class="diagnosis-result">
                     <div class="severity-indicator medium">
                         <div class="severity-dot"></div>
-                        <span>Moderado</span>
+                        <span id="severity-text">Moderado</span>
                     </div>
-                    <h3>Possível infecção respiratória</h3>
-                    <p>Baseado nos sintomas descritos, recomendamos:</p>
-                    <ul class="recommendations">
-                        <li><i class="fas fa-check-circle"></i> Repouso e hidratação</li>
-                        <li><i class="fas fa-check-circle"></i> Monitoramento da febre</li>
-                        <li><i class="fas fa-check-circle"></i> Consulta médica se persistir por mais de 3 dias</li>
+                    <h3 id="diagnosis-title">Possível infecção respiratória</h3>
+                    <p>Recomendações baseadas nos protocolos do Ministério da Saúde:</p>
+                    <ul class="recommendations" id="recommendations-list">
+                        <!-- Filled by JavaScript -->
                     </ul>
                 </div>
 
                 <div class="health-units">
-                    <h4>Unidades de saúde próximas</h4>
-                    <div class="units-grid">
-                        <div class="unit-card">
-                            <h5>UPA Centro</h5>
-                            <p><i class="fas fa-map-marker-alt"></i> Rua Principal, 123</p>
-                            <p><i class="fas fa-clock"></i> 24 horas</p>
-                            <p class="distance"><i class="fas fa-walking"></i> 1.2km</p>
-                        </div>
-                        <!-- Mais unidades -->
+                    <h4><i class="fas fa-hospital"></i> Unidades de saúde próximas</h4>
+                    <div class="units-grid" id="units-container">
+                        <!-- Filled by JavaScript -->
                     </div>
+                </div>
+
+                <div class="emergency-alert hidden" id="emergency-alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Procure atendimento <strong>URGENTE</strong> conforme indicado</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- How it Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Descreva seus sintomas</h3>
+                    <p>Informe detalhes como duração, intensidade e outros sinais relevantes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Análise por IA especializada</h3>
+                    <p>Nossos algoritmos comparam com milhares de casos reais do SUS.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Orientação personalizada</h3>
+                    <p>Receba recomendações específicas para seu caso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="assets/images/logo-white.svg" alt="MedSUS" width="120">
+                    <p>Tecnologia para democratizar o acesso à saúde.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Acesso rápido</h4>
+                    <a href="#home">Início</a>
+                    <a href="#how-it-works">Como funciona</a>
+                    <a href="#for-doctors">Para médicos</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#">Termos de uso</a>
+                    <a href="#">Política de privacidade</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <a href="mailto:contato@medsus.app">contato@medsus.app</a>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 MedSUS. Não substitui consulta médica.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
