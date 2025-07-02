@@ -3,39 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedSUS - Triagem Online</title>
+    <title>MedSUS | Triagem Médica Inteligente</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>MedSUS</h1>
-            <p>Triagem médica gratuita</p>
-        </header>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/logo.svg" alt="MedSUS" width="120">
+            </a>
+            <nav class="nav">
+                <a href="#" class="nav-link">Como funciona</a>
+                <a href="#" class="nav-link">Para médicos</a>
+                <a href="#" class="nav-link">Sobre nós</a>
+                <a href="#" class="nav-link btn-outline">Entrar</a>
+            </nav>
+        </div>
+    </header>
 
-        <main>
-            <section id="symptom-section">
-                <h2>Descreva seus sintomas</h2>
-                <textarea id="symptoms-input" placeholder="Ex.: Febre, dor de cabeça e náusea desde ontem..."></textarea>
-                <button id="analyze-btn">Analisar Sintomas</button>
-            </section>
-
-            <section id="results-section" class="hidden">
-                <h2>Resultado da Triagem</h2>
-                <div id="ai-result"></div>
-                <div id="health-units">
-                    <h3>Unidades de Saúde Próximas</h3>
-                    <ul id="units-list"></ul>
+    <main class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Triagem médica <span class="text-gradient">precisa</span> e <span class="text-gradient">acessível</span></h1>
+                <p class="hero-text">Descreva seus sintomas e receba orientações instantâneas baseadas em protocolos do SUS</p>
+                
+                <div class="symptom-card">
+                    <h3>O que você está sentindo?</h3>
+                    <textarea placeholder="Ex.: Dor de cabeça persistente, febre e náuseas..."></textarea>
+                    <button class="btn-primary">
+                        <i class="fas fa-stethoscope"></i> Analisar sintomas
+                    </button>
                 </div>
-                <button id="new-check">Nova Consulta</button>
-            </section>
-        </main>
+            </div>
+            <div class="hero-image">
+                <img src="assets/doctor-illustration.svg" alt="Médico virtual" width="400">
+            </div>
+        </div>
+    </main>
 
-        <footer>
-            <p>Este sistema não substitui uma consulta médica</p>
-        </footer>
-    </div>
+    <section class="results-section hidden">
+        <div class="container">
+            <div class="results-card">
+                <div class="back-link">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </div>
+                <h2>Resultado da sua triagem</h2>
+                
+                <div class="diagnosis-result">
+                    <div class="severity-indicator medium">
+                        <div class="severity-dot"></div>
+                        <span>Moderado</span>
+                    </div>
+                    <h3>Possível infecção respiratória</h3>
+                    <p>Baseado nos sintomas descritos, recomendamos:</p>
+                    <ul class="recommendations">
+                        <li><i class="fas fa-check-circle"></i> Repouso e hidratação</li>
+                        <li><i class="fas fa-check-circle"></i> Monitoramento da febre</li>
+                        <li><i class="fas fa-check-circle"></i> Consulta médica se persistir por mais de 3 dias</li>
+                    </ul>
+                </div>
+
+                <div class="health-units">
+                    <h4>Unidades de saúde próximas</h4>
+                    <div class="units-grid">
+                        <div class="unit-card">
+                            <h5>UPA Centro</h5>
+                            <p><i class="fas fa-map-marker-alt"></i> Rua Principal, 123</p>
+                            <p><i class="fas fa-clock"></i> 24 horas</p>
+                            <p class="distance"><i class="fas fa-walking"></i> 1.2km</p>
+                        </div>
+                        <!-- Mais unidades -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
