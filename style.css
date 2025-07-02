@@ -1,19 +1,29 @@
+:/* Reset e Variáveis */
 :root {
-    /* Cores baseadas no Manual.com.br */
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
+    --primary-light: #93c5fd;
     --text: #1f2937;
     --text-light: #6b7280;
+    --text-lighter: #9ca3af;
     --background: #f9fafb;
     --card-bg: #ffffff;
     --border: #e5e7eb;
+    --border-dark: #d1d5db;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #3b82f6;
 }
 
-/* Reset e tipografia */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -30,18 +40,77 @@ body {
     padding: 0 20px;
 }
 
-/* Header estilo Manual */
+/* Tipografia */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+/* Header */
 .header {
     padding: 20px 0;
-    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    background: white;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     z-index: 100;
 }
 
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo img {
-    height: auto;
+    height: 40px;
+    width: auto;
 }
 
 .nav {
@@ -55,25 +124,33 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
+    font-size: 0.95rem;
 }
 
 .nav-link:hover {
     color: var(--primary);
 }
 
-.btn-outline {
-    border: 1px solid var(--primary);
-    border-radius: 6px;
-    padding: 8px 16px;
-    color: var(--primary);
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
 }
 
-/* Hero section */
+/* Hero Section */
 .hero {
-    padding: 80px 0;
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .container {
     display: flex;
     align-items: center;
-    min-height: calc(100vh - 80px);
+    gap: 40px;
 }
 
 .hero-content {
@@ -85,40 +162,41 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero h1 {
     margin-bottom: 20px;
-}
-
-.text-gradient {
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
 }
 
 .hero-text {
     font-size: 1.2rem;
     color: var(--text-light);
     margin-bottom: 40px;
+    max-width: 500px;
 }
 
-/* Symptom card */
+/* Symptom Card */
 .symptom-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
     border: 1px solid var(--border);
+    margin-bottom: 30px;
 }
 
 .symptom-card h3 {
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
 }
 
 .symptom-card textarea {
@@ -130,61 +208,77 @@ h1 {
     font-family: inherit;
     margin-bottom: 20px;
     resize: vertical;
+    transition: border 0.2s;
 }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-    display: inline-flex;
+.symptom-card textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.hero-features {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-light);
 }
 
-.btn-primary:hover {
-    background: var(--primary-dark);
+.feature i {
+    color: var(--primary);
 }
 
-/* Results section */
+/* Results Section */
 .results-section {
     padding: 80px 0;
+    background: var(--background);
 }
 
 .results-card {
     background: var(--card-bg);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    max-width: 800px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     color: var(--text-light);
     margin-bottom: 20px;
-    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary);
 }
 
 .diagnosis-result {
     margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border);
 }
 
 .severity-indicator {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px;
+    padding: 6px 12px 6px 8px;
     border-radius: 20px;
     font-size: 0.9rem;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .severity-indicator.low {
@@ -203,8 +297,8 @@ h1 {
 }
 
 .severity-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
 }
 
@@ -220,42 +314,72 @@ h1 {
     background: #ef4444;
 }
 
+.diagnosis-result h3 {
+    margin-bottom: 15px;
+}
+
+.diagnosis-result p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
 .recommendations {
     list-style: none;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .recommendations li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
 }
 
 .recommendations i {
-    color: #10b981;
+    color: var(--success);
     margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.health-units {
+    margin-top: 40px;
 }
 
 .health-units h4 {
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.health-units h4 i {
+    color: var(--primary);
 }
 
 .units-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
 .unit-card {
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.unit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .unit-card h5 {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: var(--primary);
 }
 
 .unit-card p {
@@ -267,24 +391,242 @@ h1 {
     gap: 8px;
 }
 
-.distance {
+.unit-card .distance {
     color: var(--primary);
+    font-weight: 500;
+    margin-top: 12px;
+}
+
+.emergency-alert {
+    background: #fef2f2;
+    border-left: 4px solid var(--danger);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.emergency-alert i {
+    color: var(--danger);
+    font-size: 1.5rem;
+}
+
+.emergency-alert p {
+    color: var(--text);
     font-weight: 500;
 }
 
+/* How it Works Section */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.step {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.step h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.step p {
+    color: var(--text-light);
+}
+
+/* Footer */
+.footer {
+    background: var(--text);
+    color: white;
+    padding: 60px 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-col h4 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-col a {
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover {
+    color: var(--primary-light);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
 /* Responsividade */
-@media (max-width: 768px) {
-    .hero {
+@media (max-width: 1024px) {
+    .hero .container {
         flex-direction: column;
         text-align: center;
-        padding: 40px 0;
     }
     
     .hero-content {
         margin-bottom: 40px;
+        align-items: center;
     }
     
-    h1 {
-        font-size: 2rem;
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-features {
+        justify-content: center;
     }
 }
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding: 80px 0 60px;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .results-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .symptom-card {
+        padding: 20px;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.results-section.show {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Classes utilitárias */
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-40 { margin-top: 40px; }
+.mb-40 { margin-bottom: 40px; }
