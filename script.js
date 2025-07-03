@@ -1,147 +1,131 @@
-// Elementos da DOM
-const elements = {
-    searchInput: document.querySelector('.search-container input'),
-    analyzeBtn: document.querySelector('.search-container .btn-primary'),
-    resultsSection: document.querySelector('.results-section'),
-    voiceSearchBtn: document.querySelector('#voice-search-btn'),
-    mobileMenuBtn: document.querySelector('.mobile-menu-btn'),
-    mainNav: document.querySelector('.main-nav')
-};
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSUS | Triagem Inteligente do SUS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-links">
+                <a href="#"><i class="fas fa-phone-alt"></i> 136 - Central de Atendimento</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Encontre uma UBS</a>
+            </div>
+            <div class="top-buttons">
+                <a href="#" class="btn-text">Área Médica</a>
+                <a href="#" class="btn-outline-sm">Acessar</a>
+            </div>
+        </div>
+    </div>
 
-// Dados de exemplo
-const symptomDatabase = {
-    common: ["Febre", "Dor de cabeça", "Tosse", "Dor de garganta", "Náuseas"],
-    conditions: [
-        {
-            name: "Gripe",
-            symptoms: ["Febre", "Tosse", "Dor no corpo"],
-            severity: "medium",
-            recommendations: [
-                "Repouso e hidratação",
-                "Medir temperatura regularmente",
-                "Procurar UBS se persistir"
-            ]
-        }
-    ]
-};
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
-    initEventListeners();
-    setupVoiceRecognition();
-});
-
-// Event Listeners
-function initEventListeners() {
-    elements.analyzeBtn.addEventListener('click', analyzeSymptoms);
-    elements.mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-}
-
-// Análise de sintomas
-function analyzeSymptoms() {
-    const symptoms = elements.searchInput.value.trim();
-    
-    if (!symptoms) {
-        alert("Por favor, descreva seus sintomas");
-        return;
-    }
-    
-    // Simular análise (na prática, chamada à API)
-    simulateAnalysis(symptoms);
-}
-
-function simulateAnalysis(symptoms) {
-    // Mostrar loading
-    elements.analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analisando...';
-    elements.analyzeBtn.disabled = true;
-    
-    // Simular delay de rede/processamento
-    setTimeout(() => {
-        const analysis = {
-            diagnosis: "Possível infecção respiratória",
-            severity: "medium",
-            recommendations: [
-                "Repouso e hidratação abundante",
-                "Medir temperatura a cada 4 horas",
-                "Procurar UBS se sintomas persistirem"
-            ]
-        };
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="images/logo-medsus.svg" alt="MedSUS">
+            </a>
+            
+            <nav class="main-nav">
+                <a href="#" class="active">Início</a>
+                <a href="#">Como Funciona</a>
+                <a href="#">Para Unidades de Saúde</a>
+                <a href="#">Sobre o Projeto</a>
+                <a href="#">Contato</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn-icon search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-user"></i> Entrar
+                </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
         
-        displayResults(analysis);
-        
-        // Restaurar botão
-        elements.analyzeBtn.innerHTML = '<i class="fas fa-stethoscope"></i> Analisar';
-        elements.analyzeBtn.disabled = false;
-    }, 1500);
-}
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="container">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Descreva seus sintomas (ex.: dor de cabeça, febre, náuseas)">
+                    <button class="btn-primary">
+                        <i class="fas fa-stethoscope"></i> Analisar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-// Exibir resultados
-function displayResults(analysis) {
-    const resultsCard = elements.resultsSection.querySelector('.results-card');
-    
-    // Atualizar conteúdo
-    resultsCard.querySelector('.result-diagnosis h3').textContent = analysis.diagnosis;
-    
-    const severityElement = resultsCard.querySelector('.result-severity');
-    severityElement.className = `result-severity ${analysis.severity}`;
-    severityElement.querySelector('span').textContent = 
-        analysis.severity === 'high' ? 'Gravidade alta' :
-        analysis.severity === 'medium' ? 'Gravidade moderada' : 'Gravidade baixa';
-    
-    const recommendationsList = resultsCard.querySelector('.result-recommendations ul');
-    recommendationsList.innerHTML = analysis.recommendations.map(rec => `
-        <li>
-            <i class="fas fa-check-circle"></i>
-            <span>${rec}</span>
-        </li>
-    `).join('');
-    
-    // Mostrar seção de resultados
-    elements.resultsSection.classList.remove('hidden');
-    elements.resultsSection.scrollIntoView({ behavior: 'smooth' });
-}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Triagem médica <span>inteligente</span> para o SUS</h1>
+                <p class="hero-subtitle">Tecnologia avançada para orientação médica preliminar e gestão eficiente de recursos</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">+2M</div>
+                        <div class="stat-label">Triagens realizadas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Precisão diagnóstica</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Disponibilidade</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="images/hero-medico.png" alt="Médico virtual">
+                <div class="hero-badge">
+                    <span>Integrado ao</span>
+                    <img src="images/logo-sus.svg" alt="SUS">
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Menu mobile
-function toggleMobileMenu() {
-    elements.mainNav.classList.toggle('active');
-}
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Como o MedSUS transforma a saúde pública</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Triagem Rápida</h3>
+                    <p>Reduza o tempo de espera em até 70% com nossa tecnologia de análise sintomática</p>
+                    <a href="#" class="feature-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Mais feature cards... -->
+            </div>
+        </div>
+    </section>
 
-// Reconhecimento de voz
-function setupVoiceRecognition() {
-    if ('webkitSpeechRecognition' in window) {
-        const recognition = new webkitSpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = 'pt-BR';
-        
-        recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            elements.searchInput.value = transcript;
-            toggleVoiceUI(false);
-        };
-        
-        recognition.onerror = (event) => {
-            console.error('Erro no reconhecimento:', event.error);
-            toggleVoiceUI(false);
-        };
-        
-        elements.voiceSearchBtn.addEventListener('click', () => {
-            if (elements.voiceSearchBtn.classList.contains('active')) {
-                recognition.stop();
-                toggleVoiceUI(false);
-            } else {
-                recognition.start();
-                toggleVoiceUI(true);
-            }
-        });
-    } else {
-        elements.voiceSearchBtn.style.display = 'none';
-    }
-}
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-card">
+                <!-- Conteúdo de resultados... -->
+            </div>
+        </div>
+    </section>
 
-function toggleVoiceUI(isListening) {
-    elements.voiceSearchBtn.classList.toggle('active', isListening);
-    elements.voiceSearchBtn.innerHTML = isListening ? 
-        '<i class="fas fa-microphone-slash"></i>' : 
-        '<i class="fas fa-microphone"></i>';
-}
+    <script src="js/main.js"></script>
+</body>
+</html>
