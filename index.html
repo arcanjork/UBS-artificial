@@ -1,62 +1,146 @@
-<div class="symptom-search-container">
-    <!-- Barra principal -->
-    <div class="symptom-search-bar">
-        <div class="search-input-container">
-            <i class="fas fa-search search-icon"></i>
-            <input 
-                type="text" 
-                id="symptoms-input" 
-                placeholder="Descreva seus sintomas (Ex.: 'dor de cabeça com febre há 3 dias')" 
-                autocomplete="off"
-                spellcheck="false"
-            >
-            <div class="search-controls">
-                <button id="voice-search-btn" class="control-btn" title="Busca por voz">
-                    <i class="fas fa-microphone"></i>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSUS | Triagem Médica Inteligente</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.svg" alt="MedSUS">
+            </a>
+            <nav class="nav">
+                <a href="#how-it-works">Como funciona</a>
+                <a href="#for-doctors">Para médicos</a>
+                <a href="#about">Sobre nós</a>
+                <button id="login-btn" class="btn-outline">
+                    <i class="fas fa-user-md"></i> Área Médica
                 </button>
-                <button id="clear-btn" class="control-btn hidden" title="Limpar">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <button id="analyze-btn" class="analyze-btn">
-            <i class="fas fa-stethoscope"></i> Analisar
-        </button>
-    </div>
+    </header>
 
-    <!-- Painel de sugestões inteligentes -->
-    <div class="suggestion-panel hidden" id="suggestion-panel">
-        <div class="suggestion-categories">
-            <button class="category-tab active" data-category="all">Todos</button>
-            <button class="category-tab" data-category="common">Comuns</button>
-            <button class="category-tab" data-category="body">Por região</button>
-            <button class="category-tab" data-category="recent">Recentes</button>
-        </div>
-        
-        <div class="suggestion-content">
-            <div class="suggestion-group common-symptoms">
-                <h4>Sintomas frequentes</h4>
-                <div class="suggestion-tags"></div>
-            </div>
-            
-            <div class="suggestion-group body-map">
-                <h4>Selecione no corpo</h4>
-                <div class="body-map-container">
-                    <img src="assets/body-map.svg" alt="Mapa do corpo humano" class="body-map-image">
-                    <div class="body-map-areas">
-                        <!-- Áreas clicáveis serão inseridas via JS -->
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <h1>Saúde acessível com <span class="text-gradient">tecnologia</span></h1>
+                    <div class="logo-subtitle">
+                        <img src="assets/images/logo-icon.svg" alt="">
+                        <span>MedSUS</span>
+                    </div>
+                </div>
+                
+                <p class="hero-text">Plataforma oficial de triagem inteligente do SUS</p>
+                
+                <!-- Barra de Pesquisa Avançada -->
+                <div class="symptom-search-container">
+                    <div class="symptom-search-bar">
+                        <div class="search-input-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input 
+                                type="text" 
+                                id="symptoms-input" 
+                                placeholder="Descreva seus sintomas (Ex.: 'dor de cabeça com febre há 3 dias')" 
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                            <div class="search-controls">
+                                <button id="voice-search-btn" class="control-btn" title="Busca por voz">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button id="clear-btn" class="control-btn hidden" title="Limpar">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button id="analyze-btn" class="analyze-btn">
+                            <i class="fas fa-stethoscope"></i> Analisar
+                        </button>
+                    </div>
+
+                    <!-- Painel de Sugestões Inteligentes -->
+                    <div class="suggestion-panel hidden" id="suggestion-panel">
+                        <div class="suggestion-categories">
+                            <button class="category-tab active" data-category="all">Todos</button>
+                            <button class="category-tab" data-category="common">Comuns</button>
+                            <button class="category-tab" data-category="body">Por região</button>
+                            <button class="category-tab" data-category="recent">Recentes</button>
+                        </div>
+                        
+                        <div class="suggestion-content">
+                            <!-- Preenchido dinamicamente via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Painel de Histórico -->
+                    <div class="history-panel hidden" id="history-panel">
+                        <div class="history-header">
+                            <h4>Últimas consultas</h4>
+                            <button id="clear-history" class="text-btn">Limpar</button>
+                        </div>
+                        <div class="history-items">
+                            <!-- Preenchido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% seguro</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-md"></i>
+                        <span>Baseado em protocolos SUS</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <span>Privacidade garantida</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Painel de histórico -->
-    <div class="history-panel hidden" id="history-panel">
-        <div class="history-header">
-            <h4>Últimas consultas</h4>
-            <button id="clear-history" class="text-btn">Limpar</button>
+            <div class="hero-image">
+                <img src="assets/images/doctor-illustration.svg" alt="Médico virtual">
+            </div>
         </div>
-        <div class="history-items"></div>
-    </div>
-</div>
+    </main>
+
+    <!-- Seção de Resultados -->
+    <section class="results-section hidden" id="results">
+        <div class="container">
+            <div class="results-card">
+                <!-- Conteúdo preenchido dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Conteúdo do rodapé -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="modules/voice-recognition.js"></script>
+    <script src="modules/symptom-analyzer.js"></script>
+    <script src="modules/history-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
