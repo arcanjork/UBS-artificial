@@ -1,287 +1,99 @@
-/* Container principal */
-.symptom-search-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto 30px;
+/* Variáveis e Reset */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #93c5fd;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --background: #f9fafb;
+    --card-bg: #ffffff;
+    --border: #e5e7eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
 }
 
-/* Barra de pesquisa */
-.symptom-search-bar {
-    display: flex;
-    background: white;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
+/* [Todos os estilos anteriores integrados aqui] */
 
-.symptom-search-bar:focus-within {
-    border-color: var(--primary);
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-}
-
-.search-input-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    position: relative;
-}
-
-#symptoms-input {
-    flex: 1;
-    border: none;
-    padding: 16px 10px;
-    font-size: 1rem;
-    background: transparent;
-    outline: none;
-    height: 100%;
-}
-
-.search-icon {
-    color: var(--text-light);
-    margin-right: 10px;
-    font-size: 1.1rem;
-}
-
-.search-controls {
-    display: flex;
-    gap: 5px;
-}
-
-.control-btn {
-    background: none;
-    border: none;
-    color: var(--text-light);
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+/* Novos componentes */
+.logo-subtitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
-}
-
-.control-btn:hover {
-    background: var(--primary-light);
-    color: var(--primary);
-}
-
-.control-btn.active {
-    background: var(--primary);
-    color: white;
-}
-
-.analyze-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0 25px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
     gap: 10px;
+    margin-top: 15px;
 }
 
-.analyze-btn:hover {
-    background: var(--primary-dark);
+.logo-subtitle img {
+    height: 24px;
 }
 
-/* Painel de sugestões */
-.suggestion-panel {
-    position: absolute;
-    width: 100%;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-top: 10px;
-    z-index: 100;
-    overflow: hidden;
-    max-height: 500px;
-    display: flex;
-    flex-direction: column;
-}
-
-.suggestion-categories {
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    padding: 0 15px;
-}
-
-.category-tab {
-    background: none;
-    border: none;
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    cursor: pointer;
-    position: relative;
-    margin-right: 5px;
-}
-
-.category-tab.active {
+.logo-subtitle span {
+    font-size: 1.8rem;
+    font-weight: 700;
     color: var(--primary);
-    font-weight: 500;
-}
-
-.category-tab.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--primary);
-}
-
-.suggestion-content {
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.suggestion-group {
-    margin-bottom: 20px;
-}
-
-.suggestion-group h4 {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.suggestion-tags {
-    display: flex;
-    flex-wrap: wrap;
+/* Sistema de Gravidade */
+.severity-indicator {
+    display: inline-flex;
+    align-items: center;
     gap: 8px;
-}
-
-.symptom-tag {
-    background: var(--background);
-    border: 1px solid var(--border);
+    padding: 6px 12px;
     border-radius: 20px;
-    padding: 8px 15px;
+    font-weight: 500;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s;
+    margin-bottom: 15px;
 }
 
-.symptom-tag:hover {
-    background: var(--primary-light);
-    border-color: var(--primary);
-    color: var(--primary);
+.severity-low {
+    background: #ecfdf5;
+    color: #065f46;
 }
 
-/* Mapa do corpo */
+.severity-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.severity-high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Mapa do Corpo Interativo */
 .body-map-container {
     position: relative;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto;
-    width: 250px;
 }
 
 .body-map-image {
     width: 100%;
     height: auto;
-    display: block;
-}
-
-.body-map-areas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
 
 .body-area {
     position: absolute;
-    background: rgba(37, 99, 235, 0.1);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s;
+    opacity: 0.3;
 }
 
 .body-area:hover {
-    background: rgba(37, 99, 235, 0.3);
+    opacity: 0.7;
 }
 
-/* Painel de histórico */
-.history-panel {
-    position: absolute;
-    width: 100%;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin-top: 10px;
-    z-index: 100;
-    padding: 15px;
+/* Animações */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-.history-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.history-header h4 {
-    font-size: 0.95rem;
-    color: var(--text-light);
-}
-
-.text-btn {
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
-    font-size: 0.85rem;
-}
-
-.history-items {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.history-item {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    transition: background 0.2s;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.history-item:hover {
-    background: var(--background);
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-    .symptom-search-bar {
-        flex-direction: column;
-        border-radius: 15px;
-    }
-    
-    .search-input-container {
-        padding: 10px 15px;
-    }
-    
-    .analyze-btn {
-        border-radius: 0 0 15px 15px;
-        padding: 12px;
-        justify-content: center;
-    }
-    
-    .suggestion-panel {
-        position: fixed;
-        left: 20px;
-        right: 20px;
-        width: auto;
-        max-height: 70vh;
-    }
+.pulse-animation {
+    animation: pulse 2s infinite;
 }
