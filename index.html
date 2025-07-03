@@ -4,27 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedSUS | Triagem Médica Inteligente</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/medsus.css">
+    <style>
+        :root {
+            --primary: #2F5BEA;
+            --primary-dark: #1E4BD6;
+            --text: #1A1D23;
+            --text-light: #6D7278;
+            --background: #F9FAFC;
+            --card-bg: #FFFFFF;
+            --border: #E3E6EB;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-links">
+                <a href="#">Para médicos</a>
+                <a href="#">Sobre nós</a>
+                <a href="#">Ajuda</a>
+            </div>
+            <div class="auth-links">
+                <a href="#" class="btn-text">Entrar</a>
+                <a href="#" class="btn-outline">Criar conta</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
         <div class="container">
             <a href="#" class="logo">
-                <img src="assets/images/logo.svg" alt="MedSUS">
+                <img src="images/logo-medsus.svg" alt="MedSUS" width="130">
             </a>
-            <nav class="nav">
-                <a href="#how-it-works">Como funciona</a>
-                <a href="#for-doctors">Para médicos</a>
-                <a href="#about">Sobre nós</a>
-                <button id="login-btn" class="btn-outline">
-                    <i class="fas fa-user-md"></i> Área Médica
-                </button>
+            
+            <nav class="main-nav">
+                <a href="#" class="active">Início</a>
+                <a href="#">Como funciona</a>
+                <a href="#">Para unidades de saúde</a>
+                <a href="#">Planos</a>
             </nav>
+            
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -32,115 +55,125 @@
     </header>
 
     <!-- Hero Section -->
-    <main class="hero">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-title">
-                    <h1>Saúde acessível com <span class="text-gradient">tecnologia</span></h1>
-                    <div class="logo-subtitle">
-                        <img src="assets/images/logo-icon.svg" alt="">
-                        <span>MedSUS</span>
-                    </div>
-                </div>
+                <h1>Triagem médica <span>inteligente</span> para o SUS</h1>
+                <p class="hero-subtitle">Tecnologia avançada para orientação médica preliminar e gestão eficiente de recursos</p>
                 
-                <p class="hero-text">Plataforma oficial de triagem inteligente do SUS</p>
-                
-                <!-- Barra de Pesquisa Avançada -->
-                <div class="symptom-search-container">
-                    <div class="symptom-search-bar">
-                        <div class="search-input-container">
-                            <i class="fas fa-search search-icon"></i>
-                            <input 
-                                type="text" 
-                                id="symptoms-input" 
-                                placeholder="Descreva seus sintomas (Ex.: 'dor de cabeça com febre há 3 dias')" 
-                                autocomplete="off"
-                                spellcheck="false"
-                            >
-                            <div class="search-controls">
-                                <button id="voice-search-btn" class="control-btn" title="Busca por voz">
-                                    <i class="fas fa-microphone"></i>
-                                </button>
-                                <button id="clear-btn" class="control-btn hidden" title="Limpar">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button id="analyze-btn" class="analyze-btn">
+                <div class="hero-search">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Descreva seus sintomas...">
+                        <button class="btn-primary">
                             <i class="fas fa-stethoscope"></i> Analisar
                         </button>
                     </div>
-
-                    <!-- Painel de Sugestões Inteligentes -->
-                    <div class="suggestion-panel hidden" id="suggestion-panel">
-                        <div class="suggestion-categories">
-                            <button class="category-tab active" data-category="all">Todos</button>
-                            <button class="category-tab" data-category="common">Comuns</button>
-                            <button class="category-tab" data-category="body">Por região</button>
-                            <button class="category-tab" data-category="recent">Recentes</button>
-                        </div>
-                        
-                        <div class="suggestion-content">
-                            <!-- Preenchido dinamicamente via JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- Painel de Histórico -->
-                    <div class="history-panel hidden" id="history-panel">
-                        <div class="history-header">
-                            <h4>Últimas consultas</h4>
-                            <button id="clear-history" class="text-btn">Limpar</button>
-                        </div>
-                        <div class="history-items">
-                            <!-- Preenchido dinamicamente -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-features">
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>100% seguro</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-user-md"></i>
-                        <span>Baseado em protocolos SUS</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-lock"></i>
-                        <span>Privacidade garantida</span>
+                    <div class="search-tags">
+                        <span>Tente:</span>
+                        <a href="#">dor de cabeça</a>
+                        <a href="#">febre</a>
+                        <a href="#">tontura</a>
                     </div>
                 </div>
             </div>
-
+            
             <div class="hero-image">
-                <img src="assets/images/doctor-illustration.svg" alt="Médico virtual">
-            </div>
-        </div>
-    </main>
-
-    <!-- Seção de Resultados -->
-    <section class="results-section hidden" id="results">
-        <div class="container">
-            <div class="results-card">
-                <!-- Conteúdo preenchido dinamicamente -->
+                <img src="images/medsus-hero.png" alt="Médico virtual" width="550">
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">+500k</div>
+                        <div class="stat-label">triagens realizadas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">de precisão</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="footer">
+    <!-- Features Section -->
+    <section class="features">
         <div class="container">
-            <div class="footer-grid">
-                <!-- Conteúdo do rodapé -->
+            <h2 class="section-title">Como o MedSUS transforma a saúde pública</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Triagem rápida</h3>
+                    <p>Reduza o tempo de espera em até 70% com nossa tecnologia de análise sintomática</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Dados em tempo real</h3>
+                    <p>Monitoramento epidemiológico integrado para gestores de saúde</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Acesso mobile</h3>
+                    <p>Funcionalidade completa mesmo em áreas com conexão limitada</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Scripts -->
-    <script src="modules/voice-recognition.js"></script>
-    <script src="modules/symptom-analyzer.js"></script>
-    <script src="modules/history-manager.js"></script>
-    <script src="script.js"></script>
+    <!-- Results Section -->
+    <section class="results-section hidden">
+        <div class="container">
+            <div class="results-card">
+                <div class="results-header">
+                    <h2>Resultado da sua triagem</h2>
+                    <div class="result-severity medium">
+                        <div class="severity-dot"></div>
+                        <span>Gravidade moderada</span>
+                    </div>
+                </div>
+                
+                <div class="result-diagnosis">
+                    <h3>Possível infecção respiratória</h3>
+                    <p>Baseado nos sintomas descritos e protocolos do Ministério da Saúde</p>
+                </div>
+                
+                <div class="result-recommendations">
+                    <h4>Recomendações:</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Repouso e hidratação abundante</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Medir temperatura a cada 4 horas</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Procurar UBS se sintomas persistirem</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="result-actions">
+                    <button class="btn-primary">
+                        <i class="fas fa-hospital"></i> Encontrar unidade próxima
+                    </button>
+                    <button class="btn-text">
+                        <i class="fas fa-download"></i> Salvar resultado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/medsus.js"></script>
 </body>
 </html>
