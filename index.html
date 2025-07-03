@@ -3,33 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedSUS | Triagem Médica Inteligente</title>
+    <title>MedSUS | Triagem Inteligente do SUS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/medsus.css">
-    <style>
-        :root {
-            --primary: #2F5BEA;
-            --primary-dark: #1E4BD6;
-            --text: #1A1D23;
-            --text-light: #6D7278;
-            --background: #F9FAFC;
-            --card-bg: #FFFFFF;
-            --border: #E3E6EB;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
             <div class="top-links">
-                <a href="#">Para médicos</a>
-                <a href="#">Sobre nós</a>
-                <a href="#">Ajuda</a>
+                <a href="#"><i class="fas fa-phone-alt"></i> 136 - Central de Atendimento</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Encontre uma UBS</a>
             </div>
-            <div class="auth-links">
-                <a href="#" class="btn-text">Entrar</a>
-                <a href="#" class="btn-outline">Criar conta</a>
+            <div class="top-buttons">
+                <a href="#" class="btn-text">Área Médica</a>
+                <a href="#" class="btn-outline-sm">Acessar</a>
             </div>
         </div>
     </div>
@@ -37,20 +25,42 @@
     <!-- Main Header -->
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo">
-                <img src="images/logo-medsus.svg" alt="MedSUS" width="130">
+            <a href="/" class="logo">
+                <img src="images/logo-medsus.svg" alt="MedSUS">
             </a>
             
             <nav class="main-nav">
                 <a href="#" class="active">Início</a>
-                <a href="#">Como funciona</a>
-                <a href="#">Para unidades de saúde</a>
-                <a href="#">Planos</a>
+                <a href="#">Como Funciona</a>
+                <a href="#">Para Unidades de Saúde</a>
+                <a href="#">Sobre o Projeto</a>
+                <a href="#">Contato</a>
             </nav>
             
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="header-actions">
+                <button class="btn-icon search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-user"></i> Entrar
+                </button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="container">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Descreva seus sintomas (ex.: dor de cabeça, febre, náuseas)">
+                    <button class="btn-primary">
+                        <i class="fas fa-stethoscope"></i> Analisar
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -61,34 +71,27 @@
                 <h1>Triagem médica <span>inteligente</span> para o SUS</h1>
                 <p class="hero-subtitle">Tecnologia avançada para orientação médica preliminar e gestão eficiente de recursos</p>
                 
-                <div class="hero-search">
-                    <div class="search-container">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Descreva seus sintomas...">
-                        <button class="btn-primary">
-                            <i class="fas fa-stethoscope"></i> Analisar
-                        </button>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">+2M</div>
+                        <div class="stat-label">Triagens realizadas</div>
                     </div>
-                    <div class="search-tags">
-                        <span>Tente:</span>
-                        <a href="#">dor de cabeça</a>
-                        <a href="#">febre</a>
-                        <a href="#">tontura</a>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Precisão diagnóstica</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Disponibilidade</div>
                     </div>
                 </div>
             </div>
             
             <div class="hero-image">
-                <img src="images/medsus-hero.png" alt="Médico virtual" width="550">
-                <div class="hero-stats">
-                    <div class="stat-card">
-                        <div class="stat-number">+500k</div>
-                        <div class="stat-label">triagens realizadas</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">92%</div>
-                        <div class="stat-label">de precisão</div>
-                    </div>
+                <img src="images/hero-medico.png" alt="Médico virtual">
+                <div class="hero-badge">
+                    <span>Integrado ao</span>
+                    <img src="images/logo-sus.svg" alt="SUS">
                 </div>
             </div>
         </div>
@@ -104,76 +107,25 @@
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <h3>Triagem rápida</h3>
+                    <h3>Triagem Rápida</h3>
                     <p>Reduza o tempo de espera em até 70% com nossa tecnologia de análise sintomática</p>
+                    <a href="#" class="feature-link">Saiba mais <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Dados em tempo real</h3>
-                    <p>Monitoramento epidemiológico integrado para gestores de saúde</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Acesso mobile</h3>
-                    <p>Funcionalidade completa mesmo em áreas com conexão limitada</p>
-                </div>
+                <!-- Mais feature cards... -->
             </div>
         </div>
     </section>
 
     <!-- Results Section -->
-    <section class="results-section hidden">
+    <section class="results-section">
         <div class="container">
             <div class="results-card">
-                <div class="results-header">
-                    <h2>Resultado da sua triagem</h2>
-                    <div class="result-severity medium">
-                        <div class="severity-dot"></div>
-                        <span>Gravidade moderada</span>
-                    </div>
-                </div>
-                
-                <div class="result-diagnosis">
-                    <h3>Possível infecção respiratória</h3>
-                    <p>Baseado nos sintomas descritos e protocolos do Ministério da Saúde</p>
-                </div>
-                
-                <div class="result-recommendations">
-                    <h4>Recomendações:</h4>
-                    <ul>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Repouso e hidratação abundante</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Medir temperatura a cada 4 horas</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Procurar UBS se sintomas persistirem</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="result-actions">
-                    <button class="btn-primary">
-                        <i class="fas fa-hospital"></i> Encontrar unidade próxima
-                    </button>
-                    <button class="btn-text">
-                        <i class="fas fa-download"></i> Salvar resultado
-                    </button>
-                </div>
+                <!-- Conteúdo de resultados... -->
             </div>
         </div>
     </section>
 
-    <script src="js/medsus.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
